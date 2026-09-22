@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #TODO: Daftarkan aplikasi main ke dalam konfigurasi project Django.
 ]
 
 MIDDLEWARE = [
@@ -60,5 +61,6 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+# TODO: Konfigurasikan Django agar dapat menemukan static files dari folder static di root project.
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

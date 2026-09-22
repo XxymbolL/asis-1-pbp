@@ -50,15 +50,3 @@ Tambahkan view `get_sessions_json` yang mengembalikan seluruh sesi dalam format 
 ### optional
 
 Tulis unit test untuk form valid, kondisi form tidak valid, dan response JSON dengan filter `topic`.
-
-## Pertanyaan
-
-Jawab pada bagian Jawaban di bawah ini.
-
-1. Jelaskan alur request untuk `/sessions/` melalui `ruang_belajar/urls.py`, `main/urls.py`, view, model, context, dan template.
-2. Apa perbedaan fungsi `makemigrations` dan `migrate` pada model `Session`?
-3. Mengapa form memakai CSRF token dan kapan response JSON lebih tepat digunakan daripada HTML?
-
-## Jawaban
-
-Tulis jawabanmu di sini.

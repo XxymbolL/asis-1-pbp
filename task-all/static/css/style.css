@@ -124,6 +124,9 @@ h1 {
     margin: 0;
 }
 
+/* TODO: profile-details */
+/* TODO: text-link */
+
 .availability {
     margin-top: 1rem !important;
     padding-top: 1rem;
@@ -219,6 +222,9 @@ h1 {
     color: var(--muted);
 }
 
+/* TODO: styling form */
+/* TODO: styling button */
+
 .site-footer {
     padding-block: 1.5rem;
     border-top: 1px solid var(--line);
@@ -254,4 +260,5 @@ h1 {
     .session-duration {
         white-space: normal;
     }
+    /* TODO: responsive profile details */
 }
