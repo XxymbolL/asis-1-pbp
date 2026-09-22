@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ruang Belajar{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#content">Lewati ke konten</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <p class="brand">Ruang Belajar</p>
+            <nav aria-label="Navigasi utama"></nav>
+        </div>
+    </header>
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>Latihan Django untuk sesi asistensi PBP.</p>
+        </div>
+    </footer>
+</body>
+</html>

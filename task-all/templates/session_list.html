@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar Sesi | Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="sessions">
+    <div class="container">
+        <header class="section-heading">
+            <p class="context-label">Jadwal belajar</p>
+            <h1>Daftar sesi</h1>
+            <p>Sesi diurutkan dari waktu pelaksanaan paling awal.</p>
+        </header>
+
+        <div class="session-list">
+            {% for session in session_list %}
+                <article class="session-row">
+                    <div class="session-time">
+                        <time datetime="{{ session.scheduled_at|date:'c' }}">
+                            {{ session.scheduled_at|date:"d M Y" }}
+                            <span>{{ session.scheduled_at|time:"H:i" }} WIB</span>
+                        </time>
+                    </div>
+                    <div class="session-body">
+                        <p class="session-level">{{ session.get_level_display }}</p>
+                        <h2>{{ session.topic }}</h2>
+                        <p>{{ session.description }}</p>
+                    </div>
+                    <p class="session-duration">{{ session.duration_minutes }} menit</p>
+                </article>
+            {% empty %}
+                <div class="empty-state">
+                    <h2>Belum ada sesi belajar.</h2>
+                    <p>Jadwal akan muncul di halaman ini setelah data sesi ditambahkan.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
