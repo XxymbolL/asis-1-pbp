@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Tambah Sesi | Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="sessions">
+    <div class="container form-layout">
+        <header class="section-heading">
+            <p class="context-label">Jadwal belajar</p>
+            <h1>Tambah sesi</h1>
+        </header>
+        <form method="post" action="{% url 'main:create_session' %}" class="session-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <p class="form-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="button">Simpan sesi</button>
+            <a href="{% url 'main:show_sessions' %}" class="text-link">Kembali ke daftar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

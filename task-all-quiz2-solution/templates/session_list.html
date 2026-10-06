@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Daftar Sesi | Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="sessions">
+    <div class="container">
+        <header class="section-heading">
+            <p class="context-label">Jadwal belajar</p>
+            <h1>Daftar sesi</h1>
+            <p>Sesi diurutkan dari waktu pelaksanaan paling awal.</p>
+            {% if user.is_authenticated %}
+                <button type="button" class="button" id="open-session-dialog">Tambah sesi</button>
+            {% else %}
+                <a class="text-link" href="{% url 'main:login' %}">Masuk untuk menambah sesi</a>
+            {% endif %}
+        </header>
+
+        <div class="session-search">
+            <label for="session-search">Cari topik sesi</label>
+            <input id="session-search" type="search" name="topic" autocomplete="off">
+        </div>
+
+        <p id="session-loading" class="status-message" role="status" hidden>Memuat daftar sesi belajar.</p>
+        <p id="session-error" class="status-message form-error" role="alert" hidden>Daftar sesi tidak dapat dimuat. Muat ulang halaman untuk mencoba lagi.</p>
+        <div id="session-results" class="session-list" data-api-url="{% url 'main:get_sessions_json' %}"></div>
+    </div>
+</section>
+
+{% if user.is_authenticated %}
+    <dialog id="session-dialog" class="session-dialog" aria-labelledby="session-dialog-title">
+        <form id="session-ajax-form" class="session-form" method="post" action="{% url 'main:create_session_ajax' %}">
+            {% csrf_token %}
+            <header class="dialog-header">
+                <h2 id="session-dialog-title">Tambah sesi</h2>
+                <button type="button" class="plain-button" id="close-session-dialog" aria-label="Tutup form">Tutup</button>
+            </header>
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small>{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <p id="session-form-status" class="status-message" role="status"></p>
+            <div class="dialog-actions">
+                <button type="submit" class="button">Simpan sesi</button>
+                <button type="button" class="plain-button" id="cancel-session-dialog">Batal</button>
+            </div>
+        </form>
+    </dialog>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/sessions.js' %}"></script>
+{% endblock %}

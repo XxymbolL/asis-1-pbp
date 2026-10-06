@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Akun | Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="sessions">
+    <div class="container form-layout">
+        <header class="section-heading">
+            <p class="context-label">Akun Ruang Belajar</p>
+            <h1>{{ user.username }}</h1>
+            {% if last_login %}
+                <p>Login terakhir tercatat: {{ last_login }}.</p>
+            {% else %}
+                <p>Waktu login belum tercatat pada browser ini.</p>
+            {% endif %}
+        </header>
+    </div>
+</section>
+{% endblock %}

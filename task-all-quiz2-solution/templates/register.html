@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar | Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="sessions">
+    <div class="container form-layout">
+        <header class="section-heading">
+            <p class="context-label">Akun Ruang Belajar</p>
+            <h1>Buat akun</h1>
+        </header>
+        <form method="post" class="session-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small>{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p class="form-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="button">Daftar</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

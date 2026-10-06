@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Ruang Belajar{% endblock %}
+
+{% block content %}
+<section class="intro">
+    <div class="container intro-layout">
+        <div>
+            <p class="context-label">Profil fasilitator</p>
+            <h1>{{ name }}</h1>
+        </div>
+        <div class="intro-copy">
+            <p>{{ bio }}</p>
+            <dl class="profile-details">
+                <div>
+                    <dt>Program studi</dt>
+                    <dd>{{ study_program }}</dd>
+                </div>
+                <div>
+                    <dt>NPM</dt>
+                    <dd>{{ npm }}</dd>
+                </div>
+            </dl>
+            <a class="text-link" href="mailto:{{ email }}">{{ email }}</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
